@@ -1,0 +1,23 @@
+%h1 商品一覧
+%table
+  %thead
+    %tr
+      %th ID
+      %th 名前
+      %th 値段
+      %th 発売日
+  %tbody
+    - @products.each do |product|
+      %tr
+        %td
+          = product.id
+        %td
+          = product.name
+        %td
+          = product.price
+        %td
+          = product.released_on
+
+= form_tag import_products_path, multipart: true do
+  = file_field_tag :file
+  = submit_tag '読み込み'
